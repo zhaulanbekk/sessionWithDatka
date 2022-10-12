@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <form  th:method="POST"
+           th:action="@{/instructors/{id}/saveInst(id=${companyId})}"
+           th:object="${instructor}"
+           style="width: 50%">
+        <label>
+            <input name="Course name" th:field="*{firstName}" placeholder="First name" type="text" />
+        </label>
+        <label>
+            <input name="Date of start" th:field="*{lastName}" placeholder="Last Name" type="text" />
+        </label>
+        <label>
+            <input name="Description" th:field="*{phoneNumber}" placeholder="Phone Number" type="text" />
+        </label>
+        <label>
+            <input name="Image" th:field="*{email}" placeholder="email" type="text" />
+        </label>
+        <label>
+            <input name="Duration" th:field="*{specialization}" placeholder="specialization" type="text" />
+        </label>
+        <input sec:authorize="hasAnyAuthority('ADMIN')" class="button" type="submit" value="save" />
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url('https://krot.info/uploads/posts/2021-11/1636610619_1-krot-info-p-krasivii-rassvet-na-more-krasivoe-foto-2.jpg');
+        }
+        form {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            box-shadow: 2px 5px 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            padding-top: 10%;
+        }
+        input {
+            width: 300px;
+            height: 50px;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 3px solid red;
+            background: rgba( 0,0,0,.2);
+            font-family: "Candara Light",serif;
+        }
+        .button{
+            width: 100px;
+            border: 3px solid black;
+            color: white;
+        }
+        input::placeholder{
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <form  th:method="POST"
+           th:action="@{/courses/{id}/saveCourse(id=${companyId})}"
+           th:object="${course}"
+           style="width: 50%">
+        <label>
+            <input name="Course name" th:field="*{courseName}" placeholder="Course name" type="text" />
+        </label>
+        <label>
+            <input name="Date of start" th:field="*{dateOfStart}" placeholder="Date of start" type="date" />
+        </label>
+        <label>
+            <input name="Description" th:field="*{description}" placeholder="Description" type="text" />
+        </label>
+        <label>
+            <input name="Image" th:field="*{image}" placeholder="Image" type="text" />
+        </label>
+        <label>
+            <input name="Duration"  th:field="*{duration}" placeholder="Duration" type="text" />
+        </label>
+        <input class="button" type="submit" value="save" />
+    </form>
+</div>
+</body>
+</html>

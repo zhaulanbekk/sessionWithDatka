@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <form  th:method="POST"
+           th:action="@{/tasks/{id}/saveTask(id=${lessonId})}"
+           th:object="${task}"
+           style="width: 50%">
+        <label>
+            <input name="Task name" th:field="*{taskName}" placeholder="Task name" type="text" />
+        </label>
+        <label>
+            <input name="Task text" th:field="*{taskText}" placeholder="Task text" type="text" />
+        </label>
+        <input class="button" type="submit" value="save" />
+    </form>
+</div>
+</body>
+</html>

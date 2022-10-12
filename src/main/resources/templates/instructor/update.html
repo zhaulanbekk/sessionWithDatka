@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url("https://rosakhutor.com/upload/iblock/552/552cbd5587fad03449e757ec5bca06a1.jpg");
+        }
+        form {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+            box-shadow: 2px 5px 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+            padding-top: 10%;
+        }
+        input {
+            width: 300px;
+            height: 50px;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 3px solid red;
+            background: rgba( 0,0,0,.2);
+        }
+        .button{
+            width: 100px;
+            border: 3px solid black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <form  th:method="PATCH"
+           th:action="@{/instructors/{id}/{companyId}/editInst(id=${instructor.getId()},companyId=${companyId})}"
+           th:object="${instructor}" style="width: 50%">
+        <label>
+            <input name="Course name" th:field="*{firstName}"  placeholder="First Name" type="text" />
+
+            <label>
+                <input name="Date of start" th:field="*{lastName}" placeholder="Last Name" type="text" />
+            </label>
+            <label>
+                <input name="Description" th:field="*{phoneNumber}" placeholder="Phone Number" type="text" />
+            </label>
+            <label>
+                <input name="Image" th:field="*{email}" placeholder="Email" type="text" />
+            </label>
+            <label>
+                <input name="Duration" th:field="*{specialization}" placeholder="Specialization" type="text" />
+            </label>
+            <input sec:authorize="hasAnyAuthority('ADMIN')" class="button" type="submit" value="update" >
+        </label>
+    </form>
+</div>
+</body>
+</html>
